@@ -6,7 +6,7 @@ using namespace std;
 
 #define SAFE_DELETE(x) { if(x); delete x; x=0; }
 
-static cocos2d::Scene * m_scene;
+//static cocos2d::Scene * m_scene;
 
 //static Node *node;
 
@@ -39,20 +39,20 @@ HelloWorld::~HelloWorld(){ };
 Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
-    m_scene = Scene::createWithPhysics();
-    m_scene->getPhysicsWorld()->setGravity( Point( 0.0f, -200.0f ));
-    m_scene->getPhysicsWorld()->setSpeed( 2.0f );
+    auto scene = Scene::createWithPhysics();
+    scene->getPhysicsWorld()->setGravity( Point( 0.0f, -200.0f ));
+    scene->getPhysicsWorld()->setSpeed( 2.0f );
     
-m_scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+   // scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
     // 'layer' is an autorelease object
     auto layer = HelloWorld::create();
-layer->setPhyWorld(m_scene->getPhysicsWorld());
+//layer->setPhyWorld(scene->getPhysicsWorld());
     
     // add layer as a child to scene
-    m_scene->addChild(layer);
+    scene->addChild(layer);
 
     // return the scene
-    return m_scene;
+    return scene;
 }
 
 // on "init" you need to initialize your instance
@@ -112,7 +112,7 @@ bool HelloWorld::init()
     pb->setAngularVelocityLimit(150.0f);
     pb->setContactTestBitmask( 0xFFFF );
     sp->setPhysicsBody(pb);
-        pb->setDynamic(false);
+  //      pb->setDynamic(true);
     pb->setEnable(true);
     
     }
@@ -164,7 +164,6 @@ bool HelloWorld::init()
         for( int x=0; x < s.width; x++ ){
             auto n = *t++;
             if( n==5 ){
-//            if( x==5 && y==0 ){
                 CCLOG( "point(%d,%d)", x,y );
                 auto tile = layer->getTileAt(Point(x,y));
                 
@@ -178,7 +177,7 @@ bool HelloWorld::init()
                 pb->setContactTestBitmask( 0xFFFF );
        //         tile->setPhysicsBody(pb);
   //              map->setPhysicsBody(pb);
-//                node->setPhysicsBody(pb);
+                tile->setPhysicsBody(pb);
                 
             }
         }
@@ -195,14 +194,14 @@ this->addChild( pImpl->map );
 //    node->addChild( pImpl->map );
 //    this->addChild( node );
     auto initPos = pImpl->map->getObjectGroup("point")->getObject("player");
-//    pImpl->map->setPosition(Point( -(int)initPos.at("x").asFloat() , -initPos.at("y").asFloat() ));
+ //   pImpl->map->setPosition(Point( -(int)initPos.at("x").asFloat() , -initPos.at("y").asFloat() ));
  
     
     pImpl->player->getSprite() ->setPosition(getCorrectPoint(Point(initPos["x"].asFloat(), initPos["y"].asFloat())));
-    pImpl->player->getSprite() ->setAnchorPoint(Point::ZERO);
+  //  pImpl->player->getSprite() ->setAnchorPoint(Point::ZERO);
                                                 
-    m_scene->addChild(pImpl->player->getSprite(), 0);
-//    pImpl->map->addChild(pImpl->player->getSprite(), 0);
+ //   this->addChild(pImpl->player->getSprite(), 0);
+    pImpl->map->addChild(pImpl->player->getSprite(), 0);
     
     auto touchListener = EventListenerTouchOneByOne::create();
     touchListener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
@@ -258,15 +257,15 @@ bool HelloWorld::onTouchBegan(Touch *touch, Event *unused_event)
 
 void HelloWorld::onTouchMoved(Touch *touch, Event *unused_event)
 {
-//    this->setPosition(this->getPosition() + touch->getDelta());
+    pImpl->map->setPosition(pImpl->map->getPosition() + touch->getDelta());
   //　範囲チェックしよう
-    
+/*
     Vector<FiniteTimeAction*> actions;
     actions.pushBack(MoveTo::create( abs(touch->getDelta().x+touch->getDelta().y ) *0.01f, this->getPosition() + touch->getDelta() ));
     auto seq = Sequence::create(actions);
     if (seq)
         this->runAction(seq);
-    
+  */
     
     
 }
