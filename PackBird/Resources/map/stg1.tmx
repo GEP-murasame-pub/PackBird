@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="mapatlus" tilewidth="64" tileheight="64">
+  <image source="mapatlus.png" width="256" height="256"/>
+ </tileset>
+ <layer name="BG" width="50" height="50">
+  <properties>
+   <property name="colider" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztVtEKxCAM8+H2/798T4MhujZp07k7A8JAm5hpW4/W2rHHcsMDJAblZoH6UK9nET0PBT8DtY8+RoXto9aHVZNW9MHUVzYPmfUePrY3qHygd6iyp83iZvMsmNhIfbfOQ93DR3rbxz1vFVTvBpYvGlfpY1aTMmpOlg+Ej+kTXp67tcyeUPyKDy+O7jvLx4ivCtk+es5KqH1YufxUfUE4R/wr+DjXo5xZ/wfRzMLTuZ7NWwXVvc2KZ+pLlo+s80VzLPteqe6o1RdU9S8TFu9bfFy5Ld1oP1fVvp4/oo3mmgpqH9X9Yqb/Lz6aYx7RUdaXivfcTDez91b6iOwjGv90DtwB/Q8r+BjtQdW7VH5n+3zDO9HDq/Sheitamqv7OLktzeuaT1BLdR4eTcV5VOXcm3wgmnusMb5YDA2E
+  </data>
+ </layer>
+ <objectgroup name="point" width="50" height="50">
+  <object name="player" x="503" y="2952"/>
+ </objectgroup>
+ <layer name="item" width="50" height="50">
+  <properties>
+   <property name="collect" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmeEKwCAIhKP3f+j9HbFFmaen+cFYsKWdCrnWWlHw04XPstJfVxvGEhsrc3d8/L23s94dPZY10Ic7yj56DpqdumLnJh2e9m4hetwi1FEUmzM/0v2Wob4QNeKtS8M/gw4N0H3QzKenbc/cafUhWWpQQhbdfWGM8oe0y7iXnRB9/dp8xUMao5PYsuUlgxbN3J5y6nc8H2OJ8QrjfoDWYBEbtA7rbztrv9mouBVeVO3lpXJ7FxF6IoZzL2s0+ncUmv+uUTCsoSgi8QBldgDN
+  </data>
+ </layer>
+</map>
